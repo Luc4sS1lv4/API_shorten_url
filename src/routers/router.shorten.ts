@@ -16,8 +16,10 @@ export function RoutersShots(fastify: FastifyInstance){
 
     fastify.get<{Params: any | []}>("/:newURL", (req, rep)=>{
         const newURL:any = req.params
-        const obj = db.filter((a:any) => a = newURL)
-        console.log(obj[0])
-        return rep.redirect(obj[0].url)
+        const obj = db.find((a:any) => a.new = newURL)
+        console.log(obj)
+        return rep.redirect(obj.url)
     })
 } 
+
+
