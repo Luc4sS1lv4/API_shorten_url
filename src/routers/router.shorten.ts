@@ -1,9 +1,9 @@
 import type { FastifyInstance } from "fastify";
 import { nanoid } from "nanoid";
 
+const db: any = []
 
 export function RoutersShots(fastify: FastifyInstance){
-    const db: any = []
    
    
     fastify.post<{Body: any}>("/shorten", (req, rep)=>{
@@ -14,8 +14,10 @@ export function RoutersShots(fastify: FastifyInstance){
         rep.send(db)
     })
 
-    fastify.get<{Params: any | []}>("/localhost:8080/:{{db.newURL}}", (req, rep)=>{
-        const urloriginal = db.newURL
-        rep.redirect(urloriginal)
+    fastify.get<{Params: any | []}>("/:newURL", (req, rep)=>{
+        const newURL:any = req.params
+        const obj = db.filter((a:any) => a = newURL)
+        console.log(obj[0])
+        return rep.redirect(obj[0].url)
     })
-}
+} 
