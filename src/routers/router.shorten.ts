@@ -8,7 +8,7 @@ const db: Array<IShorten> = []
 export function RoutersShots(fastify: FastifyInstance){
    
    
-    fastify.post<{Body:{url: string}}>("/shortenn",(req, rep)=>{
+    fastify.post<{Body:{url: string}}>("/shorten",(req, rep)=>{
         const {url} = req.body
         const newURL = nanoid(6)
         const linkManager: IShorten = {
@@ -21,11 +21,13 @@ export function RoutersShots(fastify: FastifyInstance){
         rep.send(db)
     })
 
-    /*fastify.get<{Params: {newURL:string}}>("/:newURL", (req, rep)=>{
+    fastify.get<{Params: {newURL:string}}>("/:newURL", (req, rep)=>{
         const {newURL} = req.params
-        const obj = db.find(a => a.new = newURL)
-        return rep.redirect(obj)
+        const obj = db.find(a => a.NewUrl = newURL)
+        obj!.Clicks++
+        console.log()
+        return rep.redirect(obj!.UrlOrigin)
     })
 } 
-*/
-}
+
+
