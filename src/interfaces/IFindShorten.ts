@@ -1,6 +1,8 @@
 import type { IShorten } from "./IShorten.js";
 
-export interface IFindDbInMemory{
-    FindMemory(newUrl: string): IShorten | undefined
-    create(UrlOriginal: string, NewUrl: string, Clciks: number): IShorten
+export interface IFindDbInMemory {
+    FindMemory(NewUrl: string): IShorten | undefined
+    create(UrlOrigin: string,
+        NewUrl: string,
+        Clicks: number): IShorten
 }
