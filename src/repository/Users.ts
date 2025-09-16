@@ -6,3 +6,5 @@ const db: Array<IUser>[] = []
 export class RepositoryUser{
     constructor(private repositorUser: IReposUser){}
 }
+
+const teste:string = "s"
