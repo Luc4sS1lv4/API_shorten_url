@@ -1,5 +1,8 @@
-import type { IUser } from "../interfaces/IFindUser.js";
+import type { IUser } from "../interfaces/IUser.js";
+import type { IReposUser } from "../interfaces/IFindUsera.js";
 
 const db: Array<IUser>[] = []
 
-export default db
+export class RepositoryUser{
+    constructor(private repositorUser: IReposUser){}
+}
