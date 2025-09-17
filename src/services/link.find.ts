@@ -6,8 +6,10 @@ export class LinkFind{
 
     findLink = async (NewUrl: string)=>{
         const Link = this.repositLink.FindMemory(NewUrl)
+        if(!Link)throw new Error ("Link não encontrado")
 
+        return Link
     }
 }
 
-//Preciso incluir mais um método na interdace user e mais um campo na tabela de links guardada em memória
+

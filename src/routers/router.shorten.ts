@@ -1,6 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { nanoid } from "nanoid";
-import {controlSession, controlSignup } from "../Factory/injects.js";
+import {controllerLinkAcess, controllerLinkCre, controlSession, controlSignup } from "../Factory/injects.js";
 import { addHook } from "../hooks/auth.js";
 
 
@@ -10,9 +9,9 @@ export function RoutersShots(fastify: FastifyInstance) {
 
     fastify.post("/session", controlSession.session)
 
-    fastify.post("/shorten",{preHandler:addHook}, controlSession.session)
+    fastify.post("/shorten",{preHandler:addHook}, controllerLinkCre.Create)
 
-    //fastify.get("/:newURL")
+    fastify.get("/:newURL", controllerLinkAcess.AcessLink)
 }
 
 

@@ -8,11 +8,11 @@ export class SessionService{
         const user = this.RepositoryU.find(email)
         if(!user) throw new Error ("Email inválido, por favor digite o email corretamente")
 
-            const validSenha = await bcrypt.compare(user.senha, senha)
+        const validSenha = await bcrypt.compare(senha, user.senha)
 
             if(!validSenha) throw new Error(" Senha inválida, por favor digite a senha correta")
 
-                const token = jwt.sign(user.email, "senhaSecretaMockada", {expiresIn:"1h"})
+                const token = jwt.sign({email:user.email}, "senhaSecretaMockada", {expiresIn:"1h"})
 
                 return token 
     }
