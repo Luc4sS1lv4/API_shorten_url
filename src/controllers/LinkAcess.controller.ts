@@ -8,8 +8,7 @@ export class LinAces{
             const { newURL } = req.params
             const newL = await this.LinkAceServ.findLink(newURL)
             console.log(newL)
-            return rep.redirect(newL?.UrlOrigin);
-
+            return rep.redirect(newL.UrlOrigin);
         }catch(e:any){
             return rep.status(400).send({mensagem: e.message})
         }
