@@ -1,9 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import { nanoid } from "nanoid";
-import { AuthRouterPriva, controlSession, controlSignup } from "../server.js";
-
-
-
+import {controlSession, controlSignup } from "../Factory/injects.js";
+import { addHook } from "../hooks/auth.js";
 
 
 export function RoutersShots(fastify: FastifyInstance) {
@@ -12,7 +10,7 @@ export function RoutersShots(fastify: FastifyInstance) {
 
     fastify.post("/session", controlSession.session)
 
-    //fastify.post("/shorten",{preHandler:{AuthRouterPriva}})
+    fastify.post("/shorten",{preHandler:addHook}, controlSession.session)
 
     //fastify.get("/:newURL")
 }

@@ -1,15 +1,16 @@
-import type { SignUp } from "../services/signup.service.js"
+import {SignUp} from "../services/signup.service.js"
 
 
 export class SigunpController {
     constructor(private serviceSession: SignUp){}
-    session= async (req: any, rep: any)=>{
+    session =  async (req: any, rep: any)=>{
         try {
             const { nome, email, senha } = req.body
-            return rep.status(200).send(this.serviceSession.Create(nome, email, senha))
+            const user = await this.serviceSession.Create(nome, email, senha)
+            return rep.status(200).send(user)
 
         } catch (e: any) {
-            return req.status(400).send({ erro: e.message })
+            return rep.status(400).send({ erro: e.message })
         }
 
     }
