@@ -11,7 +11,7 @@ export function RoutersShots(fastify: FastifyInstance) {
 
     fastify.post("/shorten",{preHandler:addHook}, controllerLinkCre.Create)
 
-    fastify.get("/:newURL", controllerLinkAcess.AcessLink)
+    fastify.get("/:newURL", { preHandler: addHook } , controllerLinkAcess.AcessLink)
 }
 
 
