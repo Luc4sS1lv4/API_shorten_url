@@ -11,7 +11,13 @@ export class LinkCreate {
         const newl = nanoid(6)
         Clicks = 0
         NewUrl = newl
-        const newLink = this.ReposiLink.create(UrlOrigin, NewUrl, Clicks)
+        let newLink = this.ReposiLink.create(UrlOrigin, NewUrl, Clicks)
+        const expiresIn = setTimeout(() => {
+            newLink = {
+                UrlOrigin: "", NewUrl: "", Clicks: 0
+            }, 36e+6
+        })
+        expiresIn
         return newLink
     }
 }
