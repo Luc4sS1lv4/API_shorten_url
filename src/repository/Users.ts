@@ -5,7 +5,7 @@ const db: Array<IUser> = []
 
 export class RepositoryUser implements IReposUser{
     
-    create(nome: string, email: string, senha: string): IUser{
+    create(nome: string, email: string, senha: string, ): IUser{
         const User = {nome, email, senha}
        db.push(User)
         return User

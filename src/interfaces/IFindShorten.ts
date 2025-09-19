@@ -4,5 +4,8 @@ export interface IFindDbInMemory {
     FindMemory(NewUrl: string): IShorten | undefined
     create(UrlOrigin: string,
         NewUrl: string,
-        Clicks: number): IShorten
+        Clicks: number,
+        atDate: Date): IShorten,
+    delet(): void | undefined
+    
 }

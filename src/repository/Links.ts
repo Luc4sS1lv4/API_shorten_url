@@ -6,8 +6,8 @@ const db: Array<IShorten> = []
 
 export class RepositoLink implements IFindDbInMemory {
 
-    create(UrlOrigin: string, NewUrl: string, Clicks: number): IShorten {
-        const Link = { UrlOrigin, NewUrl, Clicks }
+    create(UrlOrigin: string, NewUrl: string, Clicks: number, atDate: Date): IShorten {
+        const Link = { UrlOrigin, NewUrl, Clicks, atDate }
         db.push(Link)
         return Link
     }
@@ -15,6 +15,11 @@ export class RepositoLink implements IFindDbInMemory {
     FindMemory(NewUrl: string): IShorten | undefined {
         const Link = db.find(e => e.NewUrl == NewUrl)
         return Link
+    }
+
+    delet():void | undefined{
+        db.pop()
+        return
     }
 }
 
