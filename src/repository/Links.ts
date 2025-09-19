@@ -6,7 +6,7 @@ const db: Array<IShorten> = []
 
 export class RepositoLink implements IFindDbInMemory {
 
-    create(UrlOrigin: string, NewUrl: string, Clicks: number, atDate: Date): IShorten {
+    create(UrlOrigin: string, NewUrl: string, Clicks: number, atDate: number): IShorten {
         const Link = { UrlOrigin, NewUrl, Clicks, atDate }
         db.push(Link)
         return Link

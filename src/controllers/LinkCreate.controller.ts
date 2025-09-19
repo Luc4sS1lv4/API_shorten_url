@@ -5,8 +5,8 @@ export class LinkCre{
     
     Create = async (req: any, rep:any)=>{
     try {
-        const {UrlOrigin, NewUrl, Clicks} = req.body
-        const newLinks = await this.LinkSerice.createLink(UrlOrigin, NewUrl, Clicks)
+        const {UrlOrigin, NewUrl, Clicks, atDate} = req.body
+        const newLinks = await this.LinkSerice.createLink(UrlOrigin, NewUrl, Clicks, atDate)
 
         return rep.status(201).send(newLinks)
     } catch (error:any) {

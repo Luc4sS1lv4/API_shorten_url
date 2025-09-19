@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
 import {controllerLinkAcess, controllerLinkCre, controlSession, controlSignup } from "../Factory/injects.js";
-import { addHook } from "../hooks/auth.js";
+import { addHook } from "../middleware/auth.js";
 
 
 export function RoutersShots(fastify: FastifyInstance) {
